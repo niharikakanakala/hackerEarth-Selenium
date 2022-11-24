@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="54.586" tests="3" failures="3">
+  <testsuite name="Root Suite" timestamp="2022-11-24T18:00:51" tests="0" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Tests" timestamp="2022-11-24T18:00:58" tests="3" file="/Users/niharikakanakala/Desktop/Myselenium/selenium/test.js" time="47.790" failures="3">
+    <testcase name="Tests Google Test" time="14.740" classname="Google Test">
+      <failure message="Cannot read property &apos;getText&apos; of undefined" type="TypeError"><![CDATA[TypeError: Cannot read property 'getText' of undefined
+    at Object.Google (index.js:53:38)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async Context.<anonymous> (test.js:16:19)]]></failure>
+    </testcase>
+    <testcase name="Tests Wikipedia Test" time="17.380" classname="Wikipedia Test">
+      <failure message="Waiting for element to be located By(css selector, *[id=&quot;results-info&quot;])
+Wait timed out after 5033ms" type="TimeoutError"><![CDATA[TimeoutError: Waiting for element to be located By(css selector, *[id="results-info"])
+Wait timed out after 5033ms
+    at /Users/niharikakanakala/Desktop/Myselenium/selenium/node_modules/selenium-webdriver/lib/webdriver.js:907:17
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)]]></failure>
+    </testcase>
+    <testcase name="Tests link" time="15.658" classname="link">
+      <failure message="Error" type="AssertionError"><![CDATA[AssertionError [ERR_ASSERTION]: Error
+    at Context.<anonymous> (test.js:35:16)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+
+      + expected - actual
+
+      -https://en.wikipedia.org/wiki/HackerEarth
+      +https://www.hackerearth.com/
+      ]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>
