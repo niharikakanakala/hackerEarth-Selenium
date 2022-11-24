@@ -36,67 +36,40 @@ before(async function () {
   });
 
   async function Google() {
-      await driver.get("https://www.google.com");
-      await driver.findElement(By.name("q")).click();
-      await driver
-        .findElement(By.name("q"))
-        .sendKeys("wikipedia");
-       await driver.findElement(By.name("btnK")).click(); 
-      let text = await driver
-        .wait(until.elementLocated(By.id("result-stats")), 10000)
-        .getText();
-      await driver.wait(until.elementLocated(By.id("rcnt")), 10000);
-      await driver.findElement(By.name("q")).clear();
-      let title = await driver.getTitle();
-      let linkLocator = await driver.findElement(By.tagName("cite"));
 
-      let url = await linkLocator[0].getText();
-     
-      console.log(url);
-
-      let answer = {
-          title: title,
-          text: text,
-          url: url,
-      };
-
-      return answer;
+    /*
+    Load https://google.com in the WebDriver
+    Programmatically type "wikipedia" in the searchBar and submit
+    Return the text got by Element by ID "result-stats" in the answer.text object
+    Return the title of the WebPage in answer.title object
+    Return the first link found in Google Search in answer.url object (Hint: tagName = "cite")
+    */
+      
           
   }
 
   async function Wikipedia() {
-    await driver.get("https://www.wikipedia.org/");
-    let input = await driver.findElement(By.id("searchInput"));
-    await input.sendKeys("hacker earth", Key.RETURN);
-    await driver.sleep(5000);
-    let text = await driver
-        .wait (until.elementLocated(By.id("content")), 5000)
-        .getText();
-     await driver.wait(until.elementLocated(By.id("results-info")), 5000);
-    await driver.findElement(By.id("searchInput")).clear();
-    let title = await driver.getTitle();
-    let url = await driver.findElement(By.title("HackerEarth"))
-    .getText();
-    console.log(url);
 
-    let answer = {
-        text: text,
-        title: title,
-        url: url
-    };
-
-    return answer;
+    /*
+    Load https://www.wikipedia.org/ in the WebDriver
+    Programmatically type "hacker earth" in the searchBar and submit
+    Return the text got by Element by ID "content" in the answer.text object
+    Return the title of the WebPage in answer.title object
+    Return the link by title "HackerEarth" found in Wikipedia Search in answer.url object 
+    */
   }
 
   async function HackerEarth() {
-      await driver.get("https://en.wikipedia.org/wiki/HackerEarth");
-      await driver.findElement(By.xpath("/html/body/div[3]/div[3]/div[5]/div[1]/table[2]/tbody/tr[8]/td/span/a"))
-      .click();
-      await driver.sleep(5000);
-      let title = await driver.getTitle();
-      let url = await driver.getCurrentUrl();
-      return { title, url, driver };
+    
+    /*
+    Load https://en.wikipedia.org/wiki/HackerEarth in the WebDriver
+    Programmatically find the element by xpath "/html/body/div[3]/div[3]/div[5]/div[1]/table[2]/tbody/tr[8]/td/span/a" and click.
+    Return the title of the WebPage in answer.title object
+    Return the current URL with answer.url object
+    */
   }
+  
+  after (() => driver && driver.quit());
   
   module.exports = { Google, Wikipedia, HackerEarth }
 
